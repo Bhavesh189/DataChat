@@ -1,173 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <link rel="stylesheet" href="style.css">
-    <style>
-        .sidebar {
-            padding: 1px 2px 44px;
-            height: 4vh;
-            width: 100px;
-            color: white;
-        }
-
-        .sidebar:hover {
-            background-color: yellow;
-            color: red;
-            transform: scale(1.1);
-            border-radius: 5px;
-        }
-
-        .three-lines {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 10vh;
-            width: 100vw;
-            background: black;
-            color: white;
-            font-size: 5vw;
-            padding: 0 2vw;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: violet;
-        }
-
-        .chats {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
-            width: 100vw;
-            background: rgb(224, 203, 203);
-            margin: auto;
-        }
-
-        .chat-shows {
-            font-size: 20px;
-            color: black;
-            font-weight: bold;
-            text-align: center;
-            background-color: white;
-            border-radius: 15px;
-            border: none
-        }
-
-        .chat-shows::placeholder {
-            background-color: white;
-            text-align: center;
-        }
-
-        .file {
-            display: none;
-        }
-
-        .box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 10vh;
-            width: 100vw;
-            background: grey;
-        }
-
-        .box1 {
-            width: 80vw;
-            height: 8vh;
-            align: center;
-        }
-
-        .mic {
-            width: 4vw;
-            height: 8vh;
-        }
-
-        p {
-            margin: 0;
-            padding: 0;
-            color: white;
-            background-color: black;
-            text-align: center;
-            font-size: 4vw;
-            height: 10vh;
-            line-height: 10vh;
-            width: 100vw;
-        }
-
-        .account {
-            padding: 1px 50px;
-        }
-
-        .account:hover {
-            background-color: cyan;
-            height: 4vh;
-            padding: 1px 50px;
-        }
-
-        .fa-file {
-            color: white;
-            font-size: 30px;
-            padding: 1px 30px 1px 1px;
-
-        }
-
-        .fileUplod::before {
-            content: "Insert File";
-            ;
-            opacity: 0;
-
-        }
-
-        .fileUplod:hover::before {
-            content: "Insert File";
-            opacity: 1;
-            color: black;
-            background-color: white;
-        }
-
-        .send {
-            width: 4vw;
-            height: 8vh;
-        }
-    </style>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHAT BOT1</title>
+    <title>DataChat</title>
 </head>
-
 <body>
-    <div class="three-lines">
-        <div class="sidebar">
-            <i class="fa fa-bars"></i>
+  
+    <p class="heading">DataChat</p>
+      <div class="account"><i class="fa-solid fa-circle-user"></i></div>
+    <div class="sidebar">
+    <div class="toggle-btn">
+        <span></span>
+        <span></span>
+        <span></span>
         </div>
-        <p>DataChat</p>
-        <div class="account"><i class="fa-solid fa-circle-user"></i></div>
-
+    <div class="next"><h3>MENU</h3>
+        <a href="#"><i class="fa fa-home"></i>Home</a>
+        <a href="#">
+<i class="fa-solid fa-circle-info"></i>About</a>
+        <a href="#"><i class="fa-slab fa-regular fa-user"></i>Contact</a>
+        <a href="#"><i class="fa fa-bell"></i>Help</a>
+        <a href="#"><i class="fa fa-cog"></i>Settings</a> 
     </div>
-    <div class="chats">
-        <input type="text" placeholder="Hello! I am DataChat 
-        " class="chat-shows" disabled>
     </div>
-    <div class="box"><label class="fileUplod"><input type="file" class="file"><i
-                class="fa-solid fa-file"></i></label><input type="text" placeholder="Ask anything for coding"
-            class="box1" id="chatingZone">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    
 
-        <button class="mic" id="micbtn"><i class="fa fa-microphone"></i></button><button class="send" id="sendbtn"><i
-                class="fa fa-paper-plane"></i>
-        </button>
+    <div class="chats" id="chats">
+        <div class="helloChat" id="helloMsg">
+            <input type="text" placeholder="Hello! I am DataChat" class="dataChat-defualt" disabled>
+        </div>
+    </div>
 
+    <div class="box">
+        <label>
+            <input type="file" class="file" class="fileUplod" id="fileUplod">
+            <i class="fa-solid fa-file"></i>
+        </label>
+        <input type="text" placeholder="Ask anything for coding" class="box1" id="chatingZone">
+        <button class="mic" id="micbtn"><i class="fa fa-microphone"></i></button>
+        <button class="send" id="sendbtn"><i class="fa fa-paper-plane"></i></button>
     </div>
 
 </body>
 <script>
+    // voice to text
     const micbtn = document.getElementById("micbtn")
     const chatingZone = document.getElementById("chatingZone")
     const listen = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -183,6 +63,36 @@
         chatingZone.value = result;
     }
 
-</script>
+    // sending message
+    const chatShows = document.getElementById("chats")
+    const sendbtn = document.getElementById("sendbtn")
+    const fileInput = document.getElementById("fileUplod");
 
+    sendbtn.addEventListener("click", () => {
+        const userMessage = chatingZone.value.trim();
+        if(userMessage === "") return;
+
+        const userMessageNew = document.createElement("div");
+        userMessageNew.classList.add("message", "user");
+        userMessageNew.innerText = userMessage;
+        chatShows.appendChild(userMessageNew);
+        chatingZone.value = "";
+        chatShows.style.justifyContent = "flex-start";
+        fileInput.value = "";
+    });
+
+    //sidebar
+let sidebar = document.querySelector(".sidebar")
+let threedots = document.querySelector(".toggle-btn")
+threedots.addEventListener("click",() => {
+    sidebar.classList.toggle("active")
+});
+//google login
+document.querySelector(".account")
+account.addEventListener("click",() => {
+   account.classList.toggle("login")
+
+});
+
+</script>
 </html>
