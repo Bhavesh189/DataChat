@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataChat</title>
+</head>
+
+<body>
+
+    <p class="heading">DataChat</p>
+    <div class="account"><i class="fa-solid fa-circle-user"></i>
+        <div class="googleLogin" id="googleLogin"><i class="fa-brands fa-google"></i>Sign in with google</div>
+
+    </div>
+    <div class="sidebar">
+        <div class="toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="next">
+            <h3>MENU</h3>
+            <a href="#"><i class="fa fa-home"></i>Home</a>
+            <a href="#">
+                <i class="fa-solid fa-circle-info"></i>About</a>
+            <a href="#"><i class="fa-slab fa-regular fa-user"></i>Contact</a>
+            <a href="#"><i class="fa fa-bell"></i>Help</a>
+
+            <a href="#"><i class="fa-solid fa-trophy"></i>Lederboard</a>
+            <a href="#"><i class="fa fa-cog"></i>Settings</a>
+            <a href="#logout" class="logoutBar"><i class="fa-sharp fa-solid fa-right-from-bracket"></i>Logout</a>
+            <div class="logout">
+                <p><i class="fa-thumbprint fa-light fa-arrow-right-from-bracket"></i>Logout instead</p>
+                <p><i class="fa-notdog-duo fa-solid fa-arrow-right-from-bracket"></i>Logout from all device</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="chats" id="chats">
+        <div class="helloChat" id="helloMsg">
+            <input type="text" placeholder="Hello! I am DataChat" class="dataChat-defualt" disabled>
+        </div>
+    </div>
+
+    <div class="box">
+        <label>
+            <input type="file" class="file" class="fileUplod" id="fileUplod">
+            <i class="fa-solid fa-file"></i>
+        </label>
+        <input type="text" placeholder="Ask anything for coding" class="box1" id="chatingZone">
+        <button class="mic" id="micbtn"><i class="fa fa-microphone"></i></button>
+        <button class="send" id="sendbtn"><i class="fa fa-paper-plane"></i></button>
+    </div>
+
+</body>
+<script>
+    // voice to text
+    const micbtn = document.getElementById("micbtn")
+    const chatingZone = document.getElementById("chatingZone")
+    const listen = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const listener = new listen();
+    listener.continuous = false;
+    listener.lang = "en-US";
+    micbtn.addEventListener("click", () => {
+        micbtn.style.background = "red"
+        listener.start()
+    });
+    listener.onresult = (event) => {
+        const result = event.results[0][0].transcript;
+        chatingZone.value = result;
+    }
+
+    // sending message
+    const chatShows = document.getElementById("chats")
+    const sendbtn = document.getElementById("sendbtn")
+    const fileInput = document.getElementById("fileUplod");
+
+    sendbtn.addEventListener("click", () => {
+        const userMessage = chatingZone.value.trim();
+        if (userMessage === "") return;
+
+        const userMessageNew = document.createElement("div");
+        userMessageNew.classList.add("message", "user");
+        userMessageNew.innerText = userMessage;
+        chatShows.appendChild(userMessageNew);
+        chatingZone.value = "";
+        chatShows.style.justifyContent = "flex-start";
+        fileInput.value = "";
+    });
+
+    //sidebar
+    let sidebar = document.querySelector(".sidebar")
+    let threedots = document.querySelector(".toggle-btn")
+    threedots.addEventListener("click", () => {
+        sidebar.classList.toggle("active")
+    });
+    //google login on click event
+    const account = document.querySelector(".account")
+    const googleLogin = document.getElementById("googleLogin")
+    account.addEventListener("click", () => {
+        googleLogin.classList.toggle("active")
+    });
+    //logout logic
+    const logoutBar = document.querySelector(".logoutBar")
+
+    const logoutOptions = document.querySelector(".logout")
+    logoutBar.addEventListener("click", () => {
+        logoutOptions.classList.toggle("active")
+    });
+</script>
+
+</html>

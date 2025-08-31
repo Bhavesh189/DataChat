@@ -5,80 +5,68 @@
 }
 
 .sidebar {
-    z-index:5;
-    color:white;
-    position:fixed;
-    font-size:20px;
-    cursor:pointer;
-    height:100vh;
-    width:250px;
-    left:-250px;
+    z-index: 5;
+    color: white;
+    position: fixed;
+    font-size: 20px;
+    cursor: pointer;
+    height: 100vh;
+    width: 250px;
+    left: -250px;
     background: black;
     transition: all 0.3s ease;
-}
-.sidebar .toggle-btn
-{
-    position:absolute;
-    right:-25px;
-    top:5px;
-    height:30px;
-    width:20px;
-    transition: all 0.3s ease;
-}
-.sidebar .toggle-btn span 
-{
-    position:absolute;
-    height:2px;
-    width:100%;
-    background:white;
-    transform:translateY(-50%);
 }
 
-.sidebar .toggle-btn span:nth-child(1)
-{
-    top:10%;
+.sidebar .toggle-btn {
+    position: absolute;
+    right: -55px;
+    top: 15px;
+    height: 50px;
+    width: 50px;
+    transition: all 0.3s ease;
 }
-.sidebar .toggle-btn span:nth-child(2)
-{
-    top:50%;
-}
-.sidebar .toggle-btn span:nth-child(3)
-{
-    top:90%;
-}
-.sidebar .next a
-{
-    display:block;
-    padding:10px 15px;
-    text-decoration: none;
-    font-family: poppins,sans-serif;
-    color:white;
-    border-bottom:2px solid green;
-}
-.sidebar .next a:hover, .sidebar .next a.active{
-    background:lightgreen;
-    color:white;    
-    font-family: poppins,sans-serif;
-}
-.sidebar.active
-{
-    position:fixed;
-    left:0;
-}
-.three-lines {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 10vh;
+
+.sidebar .toggle-btn span {
+    position: absolute;
+    height: 5px;
     width: 100%;
-    background: black;
+    background: white;
+    transform: translateY(-50%);
+}
+
+.sidebar .toggle-btn span:nth-child(1) {
+    top: 10%;
+}
+
+.sidebar .toggle-btn span:nth-child(2) {
+    top: 50%;
+}
+
+.sidebar .toggle-btn span:nth-child(3) {
+    top: 90%;
+}
+
+.sidebar .next a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-family: poppins, sans-serif;
     color: white;
-    font-size: 5vw;
-    padding: 0 2vw;
-    position:relative;
-    z-index: 2;
-    left:0;
-    right:0;
+    border-bottom: 2px solid green;
+}
+
+.sidebar .next a:hover,
+.sidebar .next a.active {
+    background: lightgreen;
+    color: white;
+    font-family: poppins, sans-serif;
+    transform: scale(1.1);
+    overflow-y: auto;
+}
+
+.sidebar.active {
+    position: fixed;
+    left: 0;
 }
 
 body {
@@ -102,7 +90,7 @@ body {
 }
 
 .helloChat {
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -127,16 +115,16 @@ body {
 }
 
 .box {
-    position:absolute;
-    bottom:0;
+    position: absolute;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 10vh;
     width: 100%;
     background: grey;
-    left:0;
-    right:0;
+    left: 0;
+    right: 0;
 }
 
 .box1 {
@@ -152,9 +140,9 @@ body {
 
 .heading {
     position: absolute;
-    top:20px;
+    top: 20px;
     left: 0;
-    right:0;
+    right: 0;
     margin: 0;
     padding: 0;
     color: white;
@@ -167,13 +155,13 @@ body {
 }
 
 .account {
-    z-index:5;
-    color:white;
-    position:absolute;
-    font-size:50px;
-    top:20px;
-    left:1450px;
-    cursor:pointer;
+    z-index: 5;
+    color: white;
+    position: absolute;
+    font-size: 70px;
+    top: 2vh;
+    right: 2vw;
+    cursor: pointer;
 }
 
 .account:hover {
@@ -209,30 +197,30 @@ body {
 .message {
     background-color: white;
     border-radius: 15px;
-    font-size:15px;
-    color:black;
+    font-size: 15px;
+    color: black;
 }
 
 .message.user {
     background-color: white;
     border-radius: 5px;
     width: fit-content;
-    font-size:23px;
-    color:black;
+    font-size: 23px;
+    color: black;
     display: flex;
     align-self: flex-end;
     justify-content: flex-end;
     text-align: right;
     max-width: 50%;
     word-wrap: break-word;
-    margin:20px;
+    margin: 20px;
 }
 
 .message.datachat {
     background-color: white;
     border-radius: 15px;
-    font-size:15px;
-    color:black;
+    font-size: 15px;
+    color: black;
     display: flex;
     justify-content: flex-start;
 }
@@ -241,11 +229,43 @@ body {
     margin: 5px;
     word-wrap: break-word;
     background-color: #ffffff;
-    color:white;
+    color: white;
 }
-h3
-{
-   position:relative;
-   top:7px;
-   left:20px;
+
+h3 {
+    position: relative;
+    top: 7px;
+    left: 20px;
+}
+
+.googleLogin {
+    display: none;
+    font-size: 14px;
+    cursor: pointer;
+    background: white;
+    color: black;
+    font-family: poppins, sans-serif;
+    width: 12vw;
+    border-radius: 7px;
+    text-align: center;
+}
+
+.googleLogin i {
+    margin-right: 20px;
+}
+
+.googleLogin.active {
+    display: block;
+    transition: 1s ease;
+    transition-duration: 1s;
+}
+
+.logout p {
+    border-bottom: 2px solid lightpink;
+    padding: 9px 12px 2px 29px;
+    display: none;
+}
+
+.logout.active p {
+    display: block;
 }
