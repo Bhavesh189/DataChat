@@ -40,6 +40,7 @@
     .heading
     {
         font-size:5vw;
+        height:6vw;
     }
 }
 .navbar {
@@ -264,16 +265,24 @@ body {
     text-align: right;
     max-width: 50%;
     word-wrap: break-word;
+    font-family: poppins , sans-serif;
     margin: 20px;
 }
 
-.message.datachat {
+.message.dataChat {
     background-color: white;
-    border-radius: 15px;
-    font-size: 15px;
+    border-radius: 5px;
+    width: fit-content;
+    font-size: 23px;
     color: black;
     display: flex;
+    align-self: flex-start;
     justify-content: flex-start;
+    text-align: left;
+    max-width: 50%;
+    word-wrap: break-word;
+    font-family: poppins , sans-serif;
+    margin: 20px;
 }
 
 .firstfile {
